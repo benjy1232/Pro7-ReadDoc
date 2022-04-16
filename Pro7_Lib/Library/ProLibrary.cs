@@ -1,4 +1,4 @@
-namespace Pro7_Lib;
+namespace Pro7_Lib.Library;
 
 public class ProLibrary
 {
