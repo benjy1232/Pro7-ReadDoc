@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakePlaylistPro7", "MakePlaylistPro7\MakePlaylistPro7.csproj", "{7DFE4650-6BF0-4D4F-B476-9E4D129D769B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pro7_Lib", "Pro7_Lib\Pro7_Lib.csproj", "{B439F91E-BDCD-484E-9A58-3C54474AAD29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{4CF9A66B-A657-4E85-9B26-A10CC6F9AB56}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DFE4650-6BF0-4D4F-B476-9E4D129D769B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DFE4650-6BF0-4D4F-B476-9E4D129D769B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DFE4650-6BF0-4D4F-B476-9E4D129D769B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DFE4650-6BF0-4D4F-B476-9E4D129D769B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B439F91E-BDCD-484E-9A58-3C54474AAD29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B439F91E-BDCD-484E-9A58-3C54474AAD29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B439F91E-BDCD-484E-9A58-3C54474AAD29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B439F91E-BDCD-484E-9A58-3C54474AAD29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CF9A66B-A657-4E85-9B26-A10CC6F9AB56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CF9A66B-A657-4E85-9B26-A10CC6F9AB56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CF9A66B-A657-4E85-9B26-A10CC6F9AB56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CF9A66B-A657-4E85-9B26-A10CC6F9AB56}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
