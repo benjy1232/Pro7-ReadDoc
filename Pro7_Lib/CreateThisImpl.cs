@@ -17,10 +17,7 @@ namespace Pro7_Lib
             StringContent Sending = new(ToSend, Encoding.UTF8, "application/json");
             HttpClient client = new HttpClient();
             Task<HttpResponseMessage> PostTask = client.PostAsync($"{webRoot}/v1/playlists", Sending);
-            while(!PostTask.IsCompleted)
-            {
-                Thread.Sleep(1000);
-            }
+            PostTask.Wait();
             HttpResponseMessage result = PostTask.Result;
             string res = result.Content.ReadAsStringAsync().Result;
             Console.WriteLine(res);

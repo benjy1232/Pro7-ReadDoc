@@ -32,7 +32,7 @@ public class Tests
     [Test]
     public void AddPlaylist()
     {
-        CreateThisImpl create = new("Easter", "playlist", "http://192.168.0.127:1025");
+        CreateThisImpl create = new("nEaster", "playlist", "http://192.168.0.127:1025");
         Assert.Pass();
     }
 }

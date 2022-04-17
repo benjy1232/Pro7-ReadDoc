@@ -11,10 +11,7 @@ public class LibraryItems
     {
         HttpClient client = new HttpClient();
         Task<string> response = client.GetStringAsync($"{root}/v1/libraries");
-        while (!response.IsCompleted)
-        {
-            Thread.Sleep(20);
-        }
+        response.Wait();
         
         Libraries = JsonConvert.DeserializeObject<List<ProID>>(response.Result);
         Presentations = new();
