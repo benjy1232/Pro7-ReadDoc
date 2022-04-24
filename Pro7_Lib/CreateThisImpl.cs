@@ -9,19 +9,23 @@ namespace Pro7_Lib
 {
     public class CreateThisImpl
     {
-        public CreateThis createdItem { get; }
-        public CreateThisImpl(string name, string type, string webRoot)
+        public string WebRoot { get; }
+        public CreateThisImpl(string webRoot)
         {
-            createdItem = new CreateThis(name, type);
+            WebRoot = webRoot;
+        }
+
+        public string SendCreatedItem(string name, PlaylistType type)
+        {
+            CreateThis createdItem = new(name, type);
             string ToSend = JsonConvert.SerializeObject(createdItem, Formatting.Indented);
             StringContent Sending = new(ToSend, Encoding.UTF8, "application/json");
             HttpClient client = new HttpClient();
-            Task<HttpResponseMessage> PostTask = client.PostAsync($"{webRoot}/v1/playlists", Sending);
+            Task<HttpResponseMessage> PostTask = client.PostAsync($"{WebRoot}/v1/playlists", Sending);
             PostTask.Wait();
             HttpResponseMessage result = PostTask.Result;
             string res = result.Content.ReadAsStringAsync().Result;
-            Console.WriteLine(res);
-
+            return res;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Testing;
 
 public class Tests
 {
-
+    const string ROOT = "http://192.168.0.125:1025";
     [SetUp]
     public void Setup()
     {
@@ -21,7 +21,7 @@ public class Tests
     [Test]
     public void GetLibrary()
     {
-        LibraryItems lib = new LibraryItems("http://192.168.0.127:1025");
+        LibraryItems lib = new(ROOT);
         if (lib.Presentations == null)
         {
             Assert.Fail();
@@ -32,7 +32,20 @@ public class Tests
     [Test]
     public void AddPlaylist()
     {
-        CreateThisImpl create = new("nEaster", "playlist", "http://192.168.0.127:1025");
+        CreateThisImpl create = new(ROOT);
+        string response = create.SendCreatedItem("playlist", PlaylistType.playlist);
+
+        if(!response.Contains("type"))
+        {
+            Assert.Fail();
+        }
+
+        response = create.SendCreatedItem("folder", PlaylistType.group);
+
+        if(!response.Contains("type"))
+        {
+            Assert.Fail();
+        }
         Assert.Pass();
     }
 }
