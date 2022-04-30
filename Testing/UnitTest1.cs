@@ -12,41 +12,38 @@ namespace Testing;
 
 public class Tests
 {
-    const string ROOT = "http://192.168.0.125:1025";
-    private LibraryItems libraryItems;
+    const string ROOT = "http://192.168.0.21:50001";
     [SetUp]
     public void Setup()
     {
     }
 
+    // Tests the creation of a playlist and the addition of songs and headers to the playlist
+    // If the creation works then it passes the test and it doesn't then it is failed
+    // It is double checked with ProPresenter 7.9 on a Windows Laptop and making sure that the 
+    // Playlist is correctly made
     [Test]
-    public void GetLibrary()
+    public void SendPlaylist()
     {
-        libraryItems = new(ROOT);
-        if (libraryItems.Presentations == null)
-        {
-            Assert.Fail();
-        }
-        Assert.Pass();
-    }
-
-    [Test]
-    public void AddPlaylist()
-    {
+        bool PlaylistSent;
+        List<IPlaylistItem> playlist = new();
+        LibraryItems libraryItems = new(ROOT);
+        
         SendCreated create = new(ROOT, libraryItems);
-        string response = create.SendCreatedPlaylist("playlist", PlaylistType.playlist);
-
-        if(!response.Contains("type"))
+        string response = create.CreateNewPlaylist("test", PlaylistType.playlist);
+        ProPlaylist? createdPlaylist = JsonConvert.DeserializeObject<ProPlaylist>(response);
+        
+        create.AddHeaderToPlaylist("Worship", playlist);
+        create.AddPresentationToPlaylist("Agnus Dei", playlist);
+        create.AddPresentationToPlaylist("Amazing Grace", playlist);
+        create.AddHeaderToPlaylist("Sermon", playlist);
+        
+        PlaylistSent = create.SendPlaylist(createdPlaylist.id.uuid, playlist);
+        if (PlaylistSent)
         {
-            Assert.Fail();
+            Assert.Pass();
         }
 
-        response = create.SendCreatedPlaylist("folder", PlaylistType.group);
-
-        if(!response.Contains("type"))
-        {
-            Assert.Fail();
-        }
-        Assert.Pass();
+        Assert.Fail();
     }
 }

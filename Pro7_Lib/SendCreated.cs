@@ -21,7 +21,7 @@ namespace Pro7_Lib
 
         }
 
-        public string SendCreatedPlaylist(string name, PlaylistType type)
+        public string CreateNewPlaylist(string name, PlaylistType type)
         {
             CreatePlaylist createdItem = new(name, type);
             string ToSend = JsonConvert.SerializeObject(createdItem, Formatting.Indented);
@@ -52,7 +52,7 @@ namespace Pro7_Lib
             playlist.Add(header);
         }
 
-        public bool SendPlaylist(string uuid, List<IPlaylistItem> playlist)
+        public bool SendPlaylist(string? uuid, List<IPlaylistItem> playlist)
         {
             IndexPlaylist(playlist);
             string playlistJson = JsonConvert.SerializeObject(playlist, Formatting.Indented);
