@@ -19,17 +19,19 @@ public class LibraryItems
         foreach (ProID library in Libraries)
         {
             string? uuid = library.uuid;
+
             response = client.GetStringAsync($"{root}/v1/library/{uuid}");
-            while (!response.IsCompleted)
-            {
-                Thread.Sleep(20);
-            }
+            response.Wait();
+
             ProLibrary? proLibrary = JsonConvert.DeserializeObject<ProLibrary>(response.Result);
             if (proLibrary?.items != null)
+            {
                 foreach (ProID id in proLibrary.items)
                 {
                     Presentations.TryAdd(id.name, id);
                 }
+            }
+                
         }
     }
 }
